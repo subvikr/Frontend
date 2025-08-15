@@ -1,0 +1,1114 @@
+/* ========================================
+   UNIVERSAL LANDING PAGE TEMPLATE - CSS
+   Created for multi-industry use
+   Customize colors, fonts, and content for each client
+   ======================================== */
+
+/* ========================================
+   CSS RESET AND BASE STYLES
+   ======================================== */
+
+/* Reset all default browser styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Includes padding and border in element's total width and height */
+}
+
+/* ========================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   Update these colors for each client's brand
+   ======================================== */
+
+:root {
+    /* Primary gradient - Main brand colors */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* Secondary gradient - Accent colors */
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    
+    /* Accent gradient - Highlight colors */
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    /* Background colors */
+    --dark-bg: #0a0a0a;           /* Main dark background */
+    --card-bg: rgba(255, 255, 255, 0.05);  /* Semi-transparent card backgrounds */
+    
+    /* Text colors */
+    --text-light: #ffffff;         /* Primary text color */
+    --text-gray: #b3b3b3;         /* Secondary text color */
+    
+    /* Border and glow effects */
+    --border-glow: rgba(102, 126, 234, 0.3);
+    
+    /* Spacing variables for consistency */
+    --section-padding: 5rem 2rem;
+    --card-border-radius: 20px;
+    --small-border-radius: 10px;
+    
+    /* Animation timing */
+    --transition-speed: 0.3s;
+    --hover-transform: translateY(-3px);
+}
+
+/* ========================================
+   BODY AND GENERAL STYLES
+   ======================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========================================
+   NAVIGATION BAR STYLES
+   Fixed header that stays at top while scrolling
+   ======================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px); /* Creates frosted glass effect */
+    border-bottom: 1px solid var(--border-glow);
+    z-index: 1000; /* Ensures navbar stays above all other elements */
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+/* Company logo/brand styling */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    cursor: pointer;
+}
+
+/* Desktop navigation menu */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+/* Navigation link styling */
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+}
+
+/* Animated underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Mobile hamburger menu button */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-light);
+    margin: 3px 0;
+    transition: var(--transition-speed);
+    border-radius: 2px;
+}
+
+/* ========================================
+   HERO SECTION STYLES
+   Main landing area with call-to-action
+   ======================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grid pattern overlay for visual interest */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+/* Main headline styling */
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Supporting text under headline */
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Container for call-to-action buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* ========================================
+   FLOATING DECORATIVE ELEMENTS
+   Animated background elements for visual appeal
+   ======================================== */
+
+.floating-element {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Individual floating element positions and sizes */
+.floating-1 { 
+    width: 80px; 
+    height: 80px; 
+    top: 20%; 
+    left: 10%; 
+    animation-delay: 0s; 
+}
+
+.floating-2 { 
+    width: 120px; 
+    height: 120px; 
+    top: 60%; 
+    right: 10%; 
+    animation-delay: 2s; 
+}
+
+.floating-3 { 
+    width: 60px; 
+    height: 60px; 
+    bottom: 20%; 
+    left: 20%; 
+    animation-delay: 4s; 
+}
+
+/* ========================================
+   BUTTON STYLES
+   Reusable button components
+   ======================================== */
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+}
+
+/* Primary button (main call-to-action) */
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: var(--hover-transform);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+/* Secondary button (alternative action) */
+.btn-secondary {
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: var(--hover-transform);
+}
+
+/* ========================================
+   SECTION CONTAINERS
+   Generic section styling and separators
+   ======================================== */
+
+/* Standard section padding and layout */
+.section {
+    padding: var(--section-padding);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section title styling */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* Section subtitle/description */
+.section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   SECTION SEPARATORS
+   Visual dividers between sections
+   ======================================== */
+
+.section-separator {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    padding: 0 2rem;
+}
+
+.separator-line {
+    width: 100%;
+    max-width: 200px;
+    height: 2px;
+    background: var(--primary-gradient);
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+/* ========================================
+   ABOUT SECTION STYLES
+   Company information and statistics
+   ======================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.about-content p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Image placeholder styling */
+.about-image .image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: var(--card-bg);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-gray);
+    text-align: center;
+    padding: 2rem;
+}
+
+.about-image .image-placeholder small {
+    margin-top: 0.5rem;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   STATISTICS SECTION
+   Animated counters for key metrics
+   ======================================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-speed) ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-glow);
+}
+
+/* Large animated numbers */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+/* Labels under numbers */
+.stat-label {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* ========================================
+   SERVICES/FEATURES SECTION
+   Grid of service cards
+   ======================================== */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Individual service/feature cards */
+.feature-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--border-glow);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+}
+
+/* Top border animation on hover */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-speed) ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Service icon styling */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gradient);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ========================================
+   TESTIMONIALS SECTION
+   Customer reviews and feedback
+   ======================================== */
+
+.testimonials {
+    background: rgba(255, 255, 255, 0.02);
+    margin: 2rem 0;
+    border-radius: var(--card-border-radius);
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Individual testimonial cards */
+.testimonial-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-speed) ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-glow);
+}
+
+/* Testimonial quote text */
+.testimonial-text {
+    color: var(--text-gray);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    position: relative;
+}
+
+/* Add quotation marks */
+.testimonial-text::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--border-glow);
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-family: serif;
+}
+
+/* Author information container */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Author avatar with initials */
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.author-info h4 {
+    color: var(--text-light);
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
+}
+
+.author-info span {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   CONTACT SECTION
+   Contact form and business information
+   ======================================== */
+
+.contact {
+    background: var(--card-bg);
+    border-radius: var(--card-border-radius);
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+/* ========================================
+   CONTACT FORM STYLES
+   ======================================== */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Form input styling */
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--small-border-radius);
+    padding: 1rem;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all var(--transition-speed) ease;
+    resize: vertical; /* Allow vertical resize for textarea */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(179, 179, 179, 0.7);
+}
+
+/* Focus state for form elements */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--border-glow);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================
+   CONTACT INFORMATION STYLES
+   ======================================== */
+
+.contact-info h3 {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.contact-intro {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--small-border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-speed) ease;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-gradient);
+    border-radius: var(--small-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.contact-item div:last-child {
+    color: var(--text-gray);
+    line-height: 1.4;
+}
+
+.contact-item strong {
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* ========================================
+   FOOTER STYLES
+   ======================================== */
+
+.footer {
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+}
+
+.footer-content p {
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Social media links */
+.social-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    background: var(--primary-gradient);
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   ANIMATIONS AND KEYFRAMES
+   ======================================== */
+
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-20px); 
+    }
+}
+
+/* ========================================
+   SCROLL REVEAL ANIMATION CLASSES
+   Applied via JavaScript when elements come into view
+   ======================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section {
+        padding: 4rem 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE LANDSCAPE
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Hide desktop navigation, show mobile toggle */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        border-top: 1px solid var(--border-glow);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+    
+    /* Mobile toggle animation */
+    .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Adjust hero section for mobile */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* Stack CTA buttons vertically on mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Single column layout for stats */
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Reduce section padding on mobile */
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Adjust contact grid for mobile */
+    .contact-grid {
+        gap: 2rem;
+    }
+    
+    /* Stack testimonials in single column */
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE PORTRAIT
+   ======================================== */
+
+@media (max-width: 480px) {
+    /* Adjust navigation padding */
+    .nav-container {
+        padding: 1rem;
+    }
+
+    /* Further reduce hero text size */
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Smaller buttons on small screens */
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Reduce card padding */
+    .feature-card,
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    
+    /* Adjust contact form */
+    .contact {
+        padding: 2rem 1rem;
+    }
+    
+    /* Smaller stat numbers */
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* Adjust section separators */
+    .section-separator {
+        margin: 2rem 0;
+    }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Improve rendering performance */
+.feature-card,
+.testimonial-card,
+.btn {
+    will-change: transform;
+}
+
+/* Optimize images and backgrounds */
+.hero::before {
+    will-change: opacity;
+}
+
+/* ========================================
+   PRINT STYLES
+   Clean layout for printing
+   ======================================== */
+
+@media print {
+    /* Hide interactive elements when printing */
+    .navbar,
+    .floating-element,
+    .btn,
+    .mobile-toggle {
+        display: none !important;
+    }
+    
+    /* Use light background for printing */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    /* Ensure good contrast for text */
+    .section-title,
+    .hero-title {
+        color: black !important;
+        -webkit-text-fill-color: black !important;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Focus styles for keyboard navigation */
+.btn:focus,
+.nav-links a:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--border-glow);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-element {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --text-gray: #ffffff;
+        --border-glow: rgba(255, 255, 255, 0.8);
+    }
+    
+    .feature-card,
+    .testimonial-card,
+    .contact {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR (WEBKIT BROWSERS)
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-gradient);
+}
+
+/* ========================================
+   END OF STYLESHEET
+   
+   CUSTOMIZATION NOTES:
+   1. Update CSS custom properties (:root) for brand colors
+   2. Replace placeholder content in HTML
+   3. Add client's images and replace image placeholders
+   4. Update contact information
+   5. Modify service icons and descriptions
+   6. Customize testimonials with real client feedback
+   7. Adjust font sizes and spacing as needed
+   8. Test on various devices and browsers
+   
+   BROWSER SUPPORT:
+   - Chrome 60+
+   - Firefox 55+
+   - Safari 12+
+   - Edge 79+
+   
+   PERFORMANCE TIPS:
+   - Optimize images before uploading
+   - Use WebP format for better compression
+   - Minify CSS and JavaScript in production
+   - Enable gzip compression on server
+   ======================================== */
